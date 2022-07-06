@@ -39,6 +39,7 @@ export enum Page {
   Achievements,
   ThemeBrowser,
   ImportSave,
+  PublicCrime,
 }
 
 export interface ScriptEditorRouteOptions {
@@ -88,4 +89,5 @@ export interface IRouter {
   toAchievements(): void;
   toThemeBrowser(): void;
   toImportSave(base64Save: string, automatic?: boolean): void;
+  toPublicCrime(): void;
 }

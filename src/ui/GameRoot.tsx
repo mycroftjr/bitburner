@@ -87,6 +87,7 @@ import { BypassWrapper } from "./React/BypassWrapper";
 import _wrap from "lodash/wrap";
 import _functions from "lodash/functions";
 import { Apr1 } from "./Apr1";
+import { PublicCrimeRoot } from "../PublicCrime/ui/PublicCrimeRoot";
 
 const htmlLocation = location;
 
@@ -150,12 +151,14 @@ export let Router: IRouter = {
   toAchievements: uninitialized,
   toThemeBrowser: uninitialized,
   toImportSave: uninitialized,
+  toPublicCrime: uninitialized,
 };
 
 function determineStartPage(player: IPlayer): Page {
   if (RecoveryMode) return Page.Recovery;
   if (player.isWorking) return Page.Work;
-  return Page.Terminal;
+  return Page.PublicCrime;
+  //return Page.Terminal;
 }
 
 export function GameRoot({ player, engine, terminal }: IProps): React.ReactElement {
@@ -282,6 +285,9 @@ export function GameRoot({ player, engine, terminal }: IProps): React.ReactEleme
       setImportString(base64save);
       setImportAutomatic(automatic);
       setPage(Page.ImportSave);
+    },
+    toPublicCrime: () => {
+      setPage(Page.PublicCrime);
     },
   };
 
@@ -479,6 +485,10 @@ export function GameRoot({ player, engine, terminal }: IProps): React.ReactEleme
           softReset={softReset}
         />
       );
+      break;
+    }
+    case Page.PublicCrime: {
+      mainPage = <PublicCrimeRoot />;
       break;
     }
     case Page.Augmentations: {

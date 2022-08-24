@@ -9,7 +9,7 @@ Read content of a file.
 <b>Signature:</b>
 
 ```typescript
-read(handle: string): PortData;
+read(handle: string);
 ```
 
 ## Parameters
@@ -20,7 +20,7 @@ read(handle: string): PortData;
 
 <b>Returns:</b>
 
-[PortData](./bitburner.portdata.md)
+any
 
 Data in the specified text file.
 
